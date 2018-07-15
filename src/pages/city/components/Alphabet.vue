@@ -18,6 +18,16 @@ export default {
   props: {
     cities: Object
   },
+  data () {
+    return {
+      startY: 0,
+      touchStatus: false,
+      timer: null
+    }
+  },
+  updated () {
+    this.startY = this.$refs['A'][0].offsetTop
+  },
   computed: {
     letters () {
       const letters = []
@@ -25,11 +35,6 @@ export default {
         letters.push(i)
       }
       return letters
-    }
-  },
-  data () {
-    return {
-      touchStatus: false
     }
   },
   methods: {
@@ -41,12 +46,16 @@ export default {
     },
     handleTouchMove (e) {
       if (this.touchStatus) {
-        const startY = this.$refs['A'][0].offsetTop
-        const touchY = e.touches[0].clientY - 88
-        const index = Math.floor((touchY - startY) / 21)
-        if (index >= 0 && index <= this.letters.length) {
-          this.$emit('change', this.letters[index])
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.tiemr = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 88
+          const index = Math.floor((touchY - this.startY) / 21)
+          if (index >= 0 && index <= this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 15)
       }
     },
     handleTouchEnd () {
