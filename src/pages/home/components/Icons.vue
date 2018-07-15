@@ -15,51 +15,20 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      iconsList: [{
-        id: '001',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-        desc: '热门景点'
-      }, {
-        id: '002',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/27/dac2bcf9added702.png',
-        desc: '美食'
-      }, {
-        id: '003',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png',
-        desc: '游乐场'
-      }, {
-        id: '004',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png',
-        desc: '玩转长隆'
-      }, {
-        id: '005',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png',
-        desc: '全部玩乐'
-      }, {
-        id: '006',
-        imgUrl: 'https://gw.alicdn.com/tps/TB1d30fPVXXXXbGXXXXXXXXXXXX-183-144.png',
-        desc: '天猫'
-      }, {
-        id: '007',
-        imgUrl: 'https://gw.alicdn.com/tfs/TB1lZyXcQyWBuNjy0FpXXassXXa-183-144.png',
-        desc: '聚划算'
-      }, {
-        id: '008',
-        imgUrl: 'https://gw.alicdn.com/tfs/TB163FbPVXXXXcKXXXXXXXXXXXX-183-144.png',
-        desc: '天猫国际'
-      }, {
-        id: '009',
-        imgUrl: 'https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png',
-        desc: '外卖'
-      }]
+      swiperOption: {
+        autoplay: false
+      }
     }
   },
   computed: {
     pages () {
       const pages = []
-      this.iconsList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
