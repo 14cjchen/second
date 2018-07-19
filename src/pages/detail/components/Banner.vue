@@ -15,7 +15,7 @@
 <script>
 import CommonGallery from 'common/gallery/Gallery'
 export default {
-  name: 'Detail',
+  name: 'DetailBanner',
   components: {
     CommonGallery
   },
