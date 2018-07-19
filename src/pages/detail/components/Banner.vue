@@ -2,13 +2,13 @@
   <div>
     <div class="banner" @click="handleBannerClick">
       <img class="banner-img"
-           src="//img1.qunarzz.com/sight/p0/1511/be/be92297f68b40be390.water.jpg_600x330_cf40e757.jpg"/>
+           :src="bannerImg"/>
       <div class="banner-info">
-        <div class="banner-title">莲花山温泉度假村</div>
-        <div class="banner-number"><span class="iconfont banner-icon">&#xe692; </span>39</div>
+        <div class="banner-title">{{sightName}}</div>
+        <div class="banner-number"><span class="iconfont banner-icon">&#xe692; </span>{{this.gallaryImgs.length}}</div>
       </div>
     </div>
-    <common-gallery :imgs="imgs" v-show="GalleryShow" @close="handleGalleryClose"></common-gallery>
+    <common-gallery :imgs="gallaryImgs" v-show="GalleryShow" @close="handleGalleryClose"></common-gallery>
   </div>
 </template>
 
@@ -19,12 +19,14 @@ export default {
   components: {
     CommonGallery
   },
+  props: {
+    bannerImg: String,
+    gallaryImgs: Array,
+    sightName: String
+  },
   data () {
     return {
-      GalleryShow: false,
-      imgs: ['http://img1.qunarzz.com/sight/p0/1507/b1/bcc9a2ba77f88f6486fe923a05d734b8.water.jpg_r_800x800_644b2c89.jpg',
-        'http://img1.qunarzz.com/sight/p0/1507/b4/905d547af265048effa3c99ce6cc1901.water.jpg_r_800x800_38ca712c.jpg']
-    }
+      GalleryShow: false}
   },
   methods: {
     handleBannerClick () {
